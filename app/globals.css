@@ -1,39 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@tailwind base; /* load Tailwind reset layer */
+@tailwind components; /* load Tailwind component classes */
+@tailwind utilities; /* load Tailwind utility helpers */
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 180 100% 50%;
-    --accent-foreground: 0 0% 0%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 100% / 0.1;
-    --input: 0 0% 10%;
-    --ring: 0 0% 100%;
-    --radius: 1rem;
+    --background: 0 0% 0%; /* pure black page background */
+    --foreground: 0 0% 100%; /* white text on black */
+    --card: 0 0% 5%; /* dark gray card background */
+    --card-foreground: 0 0% 100%; /* white text on cards */
+    --popover: 0 0% 5%; /* same dark gray for popups */
+    --popover-foreground: 0 0% 100%; /* white text inside popups */
+    --primary: 0 0% 100%; /* main brand = white */
+    --primary-foreground: 0 0% 0%; /* black text if used on white */
+    --secondary: 0 0% 10%; /* darker gray for secondary UI */
+    --secondary-foreground: 0 0% 100%; /* white on secondary */
+    --muted: 0 0% 10%; /* dim section background */
+    --muted-foreground: 0 0% 60%; /* lighter gray text */
+    --accent: 180 100% 50%; /* cyan accent */
+    --accent-foreground: 0 0% 0%; /* black text on accent */
+    --destructive: 0 62.8% 30.6%; /* dark red for danger actions */
+    --destructive-foreground: 0 0% 100%; /* white on red */
+    --border: 0 0% 100% / 0.1; /* faint white border */
+    --input: 0 0% 10%; /* input background */
+    --ring: 0 0% 100%; /* focus ring = white */
+    --radius: 1rem; /* large rounded corners */
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
-    cursor: none;
+    @apply border-border; /* default border color from vars */
+    cursor: none; /* hide cursor by default */
   }
 
-  /* Override cursor for interactive elements */
   input,
   textarea,
   select,
@@ -42,94 +41,68 @@
   [role="button"],
   .cursor-pointer,
   .cursor-text {
-    cursor: auto !important;
+    cursor: auto !important; /* bring cursor back for clickable/text fields */
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    overflow-x: hidden;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply bg-background text-foreground; /* apply dark background + white text */
+    font-feature-settings: "rlig" 1, "calt" 1; /* enable nicer font features */
+    overflow-x: hidden; /* stop sideways scrolling */
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; /* clean font stack */
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* smooth scrolling for anchor links */
   }
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
+::-webkit-scrollbar { width: 8px; } /* slim scrollbar */
+::-webkit-scrollbar-track { background: transparent; } /* invisible track */
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; } /* white thumb */
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); } /* brighter on hover */
 
 /* Selection styling */
-::selection {
-  background: rgba(34, 211, 238, 0.2);
-  color: white;
-}
+::selection { background: rgba(34,211,238,0.2); color: white; } /* cyan highlight on text */
 
 /* Smooth animations */
-* {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
+* { transition: all 0.2s cubic-bezier(0.4,0,0.2,1); } /* animate all changes smoothly */
 
 /* Typography improvements */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 900;
-  letter-spacing: -0.025em;
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 900; /* bold headers */
+  letter-spacing: -0.025em; /* tighter spacing */
 }
 
 /* Glass morphism utilities */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.05); /* faint transparent layer */
+  backdrop-filter: blur(20px); /* blur behind element */
+  border: 1px solid rgba(255,255,255,0.1); /* thin white border */
 }
 
 /* Gradient text utilities */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg,#ffffff 0%,#a1a1aa 100%); /* white → gray gradient */
+  -webkit-background-clip: text; /* clip gradient to text */
+  -webkit-text-fill-color: transparent; /* hide actual text color */
   background-clip: text;
 }
 
 /* Button hover effects */
-.btn-hover {
-  position: relative;
-  overflow: hidden;
+.btn-hover { 
+  position: relative; /* needed so pseudo element can sit on top */
+  overflow: hidden; /* keep shine effect inside button */
 }
 
 .btn-hover::before {
-  content: "";
+  content: ""; /* create empty element for shine */
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transition: left 0.5s;
+  left: -100%; /* start fully to the left */
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent); /* light strip */
+  transition: left 0.5s; /* slide smoothly */
 }
 
-.btn-hover:hover::before {
-  left: 100%;
-}
-
+.btn-hover:hover::before { left: 100%; } /* slide shine all the way across */
